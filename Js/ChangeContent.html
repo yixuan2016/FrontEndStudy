@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>js更改HTML内容</title>
+    </head>
+    <style media="screen">
+
+    </style>
+    <script type="text/javascript">
+        function myFunction() {
+            x = document.getElementById("demo");
+            // 改变内容
+            x.innerHTML = "Hello javascript";
+            // 改变颜色
+            x.style.color = "#f00";
+        }
+
+        function isNumber() {
+            var a = document.getElementById("isNumber").value;
+            if(a == "" || isNaN(a)) {
+                alert("不是数字");
+            }else {
+                alert("恭喜你 输入的是数字");
+            }
+        }
+    </script>
+    <body>
+        <div id="demo">this is content</div>
+        <button type="button" onclick="myFunction()">点击这里</button>
+
+        <p>判断是否是数字</p>
+        <input type="text" name="" id="isNumber">
+        <button type="button" name="button" onclick="isNumber()">提交</button>
+    </body>
+</html>

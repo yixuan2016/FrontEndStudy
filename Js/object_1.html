@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>js对象的使用</title>
+    </head>
+    <body>
+        <p id = "person"></p>
+        <script>
+            // 使用字符来定义和创建JavaScript对象
+            var person = {
+                id: 1234,
+                firstName: "John",
+                lastName: "Doe",
+                age: 21,
+                eyeColor: "blue",
+                fullName: function() {
+                    return this.firstName + " " + this.lastName;
+                }
+            };
+
+            console.log(person.lastName);
+            console.log(person["firstName"]);
+            console.log(person.fullName);
+
+            document.getElementById('person').innerHTML = person.fullName();
+        </script>
+    </body>
+</html>

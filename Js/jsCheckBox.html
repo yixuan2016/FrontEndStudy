@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>javascript CheckBox全选与全取消</title>
+    </head>
+    <body>
+        看书:<input type="CheckBox" name="CheckBox" value="1">
+        <br>
+        写字:<input type="CheckBox" name="CheckBox" value="2">
+        <br>
+        轮滑:<input type="CheckBox" name="CheckBox" value="3">
+        <br>
+        玩游戏:<input type="CheckBox" name="CheckBox" value="4">
+        <br>
+        <button onclick="allcheck()">全选/取消</button>
+
+        <script>
+            var checkAll = false;
+            function allcheck() {
+                checkAll = !checkAll;
+                let inputs = document.getElementByName('CheckBox')
+                for (var i = 0; i < inputs.length; i++) {
+                    inputs[i].checked = checkAll
+                }
+            }
+        </script>
+    </body>
+</html>
