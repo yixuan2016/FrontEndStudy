@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <style>
+    @media screen and (min-width: 480px) {body {background-color: lightgreen;}}
+
+        div{
+            border: 1px solid red;
+
+        }
+        .sy {
+            float: left;
+            height: 20px;
+            border: 1px solid #000;
+        }
+        .sy::after {
+            content: '';
+            width: 100px;
+        }
+    </style>
+    <body>
+        <div>
+            <div class="sy"></div>
+        </div>
+
+    </body>
+</html>

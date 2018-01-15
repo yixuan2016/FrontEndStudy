@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>弹性盒子布局</title>
+        <style media="screen">
+            body {
+                /*
+                    修改排列方向
+                    rtl (right-to-left),
+                 */
+                direction: rtl;
+            }
+            .flex-container {
+                /* 采用弹性盒子布局必须设置的属性 */
+                display: flex;
+                display: -webkit-flex;
+                /*
+                    flex-direction 顺序指定了弹性子元素在父容器中的位置。
+                    flex-direction: row | row-reverse | column | column-reverse
+                 */
+                flex-direction: row-reverse;
+                -webkit-flex-direction: row-reverse;
+                width: 400px;
+                height: 200px;
+                background-color: lightgrey;
+            }
+            .flex-item {
+                background-color: cornflowerblue;
+                width: 100px;
+                height: 100px;
+                margin: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flex-container">
+            <div class="flex-item">flex item 1</div>
+            <div class="flex-item">flex item 2</div>
+            <div class="flex-item">flex item 3</div>
+        </div>
+    </body>
+</html>

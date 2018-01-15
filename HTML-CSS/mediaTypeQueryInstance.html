@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>css3多媒体查询实例</title>
+        <style media="screen">
+            ul {
+                list-style-type: none;
+            }
+            ul li a {
+                color: green;
+                text-decoration: none;
+                padding: 3px;
+                display: block;
+            }
+            /* 520到699宽度 添加邮箱图标 */
+            @media screen and (max-width: 699px) and (min-width: 522px) {
+                ul li a {
+                    padding-left: 30px;
+                    background: url(email-icon.png) left center no-repeat;
+                }
+            }
+            /* 700 到 1000px - 添加文本前缀信息 */
+            @media screen and (max-width: 1000px) and (min-width: 700px) {
+                ul li a::before {
+                    content: "Email:";
+                    font-style: italic;
+                    font-size: 12px;
+                    color: #666;
+                }
+            }
+            /* 大于 1001px 宽度 - 添加邮件地址 */
+            @media screen and (min-width: 1001px) {
+                ul li a::after {
+                    content: "("attr(data-email)")";
+                    font-size: 12px;
+                    font-style: italic;
+                    color: #666;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li><a href="mailto:johndoe@example.com" data-email="johndoe@example.com">johndoe</a></li>
+            <li><a href="mailto:marymoe@example.com" data-email="marymoe@example.com">marymoe</a></li>
+            <li><a href="mailto:yixuan@example.com" data-email="yixuan@example.com">yixuan</a></li>
+        </ul>
+    </body>
+</html>

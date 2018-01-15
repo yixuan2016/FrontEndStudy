@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>throw</title>
+    </head>
+    <body>
+        <form class="" method="post">
+            <input id="txt" type="text">
+            <input type="button" onclick="demo()" value="按钮">
+        </form>
+
+        <script>
+            function demo() {
+                try {
+                        var e = document.getElementById("txt").value;
+
+                        if(e == "") {
+                            throw "第一个用户输入异常==空";
+                        }else {
+                            alert("you typied " + e);
+                        }
+                    }catch(err) {
+                        alert(err);
+                    }
+            }
+        </script>
+    </body>
+</html>

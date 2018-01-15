@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>li的传奇</title>
+    </head>
+    <body>
+        <ul>
+            <li>1</li><li>3</li> <li>4</li><li>5</li><li>6</li><li>7</li>
+            <li>5</li><li>6</li><li>7</li><li>5</li><li>6</li><li>7</li>
+            <li>5</li><li>6</li><li>7</li><li>5</li><li>6</li><li>7</li>
+            <li>5</li><li>6</li><li>7</li><li>5</li><li>6</li><li>7</li>
+        </ul>
+    </body>
+    <script type="text/javascript">
+        window.onload = function() {
+            var btn = document.getElementsByTagName('li');
+            // console.log(btn.length);
+            for(var i = 0; i < btn.length; i ++) {
+                btn[i].onclick = function(){
+                     console.log(this.innerHTML);
+                }
+            }
+        }
+
+        var array = [1, {name:"dell"},[1,2,3]];
+    </script>
+</html>

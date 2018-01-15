@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>css3分页</title>
+        <style media="screen">
+            ul.pagination {
+                display: inline-block;
+                padding: 0;
+                margin: 0;
+            }
+
+            ul.pagination li {
+                display: inline;
+            }
+
+            ul.pagination li a {
+                color: #555;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+                /*border-radius: 5px;*/
+                /* 添加过渡效果 */
+                transition: background-color .5s;
+                /* 添加边框 */
+                border: 1px solid #ddd;
+                /* 分页间隔 */
+                margin: 0 4px;
+            }
+
+            /* 增加悬停效果 */
+            ul.pagination li a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+
+            /* 设置第一个和最后一个框的圆角 */
+            .pagination li:first-child a {
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+            }
+            .pagination li:last-child a {
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
+
+            /* 分页居中显示 */
+            div.center {text-align: center;}
+
+            /* 面包屑导航样式 start */
+            ul.breadcrumb {
+                padding: 8px 16px;
+                list-style: none;
+                background-color: #eee;
+            }
+            ul.breadcrumb li {display: inline;}
+            ul.breadcrumb li + li::before {
+                padding: 8px;
+                color: black;
+                content: "/\00a0";
+            }
+            ul.breadcrumb li a {color: green;}
+            /* 面包屑导航栏结束 */
+
+            span::before{
+                content: "《";
+                color: blue;
+            }
+            span::after{
+                content: "》";
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="center">
+            <ul class="pagination">
+                <li><a href="#"><</a></li>
+                <li><a href="#">1</a></li>
+                <li><a class="active" href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">6</a></li>
+                <li><a href="#">7</a></li>
+                <li><a href="#">8</a></li>
+                <li><a href="#">></a></li>
+            </ul>
+        </div>
+        <hr>
+
+        <p>上一页，下一页按钮</p>
+        <ul class="pagination">
+            <li><a href="#"><</a></li>
+            <li><a href="#">></a></li>
+        </ul>
+
+        <hr>
+        <p>分页导航</p>
+        <ul class="pagination">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+        </ul>
+
+        <hr>
+        <p>面包屑导航</p>
+        <ul class="breadcrumb">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">前端</a></li>
+            <li><a href="#">HTML教程</a></li>
+            <li><a href="#">html段落</a></li>
+        </ul>
+
+        <hr>
+        <span>平凡的世界</span>
+    </body>
+</html>

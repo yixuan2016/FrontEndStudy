@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Error对象</title>
+    </head>
+    <body>
+        <script>
+            var err1 = new Error("出错了");
+            var err2 = new RangeError("变量超出有效范围");
+            var err3 = new TypeError("出错了，数据类型无效");
+
+            console.log(err1.message);
+            console.log(err2.message);
+            console.log(err3.message);
+
+            // 自定义错误
+            function UserError(message) {
+                this.message = message || "默认信息";
+                this.name = 'UserError';
+            }
+
+            UserError.prototype = new Error();
+            UserError.prototype.constructor = UserError();
+
+            var err = new UserError("这是自定义错误");
+            console.log(err.message);
+
+            // finally 代码块
+            function cleansUp() {
+                try {
+                    throw new Error("出错了...");
+                    console.log("此行不会执行");
+                } finally {
+                    console.log("完成清理任务");
+                }
+            }
+            cleansUp();
+
+            // finally 用法的典型场景
+            // openFile();
+            // try {
+            //     writeFile(Data);
+            // } catch (e) {
+            //     handleError(e);
+            // } finally {
+            //     closeFile();
+            // }
+             function demo() {
+                 try {
+                     throw '出错了';
+                 } catch (e) {
+                     console.log("捕获到内部错误");
+                     throw e;
+                 } finally {
+                     return false;
+                 }
+             }
+
+             try {
+                 demo();
+             } catch(e) {
+                 // 此处不会执行
+                 console.log("caught outer 'bugs'"|);
+             }
+        </script>
+    </body>
+</html>

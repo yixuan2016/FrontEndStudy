@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>js对象</title>
+    </head>
+    <body>
+        <script>
+        /**
+         * 下面这段代码中，Vehicle就是构造函数，它提供模板用来生成实例对象，
+         * 为了与普通函数区别，构造函数名字的第一个字母通常大写
+         * 构造函数的特点有两个:
+         * 函数体内部使用了this关键字，代表了所要生成的对象实例。
+         * 生成对象的时候，必需用new命令，调用Vehicle函数。
+         * @type {[type]}
+         */
+
+            var Vehicle = function() {
+                this.price = 1000;
+            };
+
+            var v = new Vehicle();
+            console.log(v.price);
+
+            // var v = Vehicle();
+            // v.price;
+            // 如果不使用new关键字 直接调用构造函数，构造函数将变成普通函数，
+            // 并不会生成实例对象，this这时代表全局对象 price就变成了全局变量
+            // v 就变成了undefined
+            // 因此要异常小心 构造函数必须与new命令一起使用
+            // 另外，有一个解决办法就是在构造函数中使用严格模式，
+            // 即在第一行加上 use strict
+            // 例子如下：
+            function Animal(name,age) {
+                'use strict';   // 使用严格模式
+                this._name = name;
+                this._age  = age;
+            }
+
+            // Animal();  // ncaught TypeError: Cannot set property '_name' of undefined
+            // 上面代码的Fubar为构造函数，use strict命令保证了该函数在严格模式下运行。
+            // 由于在严格模式中，函数内部的this不能指向全局对象，默认等于undefined，
+            // 导致不加new调用会报错（JavaScript 不允许对undefined添加属性）
+            // 另外一种解决办法:
+            function People(name, age) {
+                if(!(this instanceof People)) {
+                    return new People(name, age);
+                }
+
+                this._name = name;
+                this._age  = age;
+            }
+
+            console.log(People("小明", 12)._name);
+            console.log(new People("xiao hong", 13)._name);
+        </script>
+    </body>
+</html>

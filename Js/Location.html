@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Location对象和属性</title>
+    </head>
+    <body>
+        <button id="btn">点击获取Location对象和属性</button>
+        <p id="pid"></p>
+        <script>
+            var locationInfo = document.getElementById("btn");
+            locationInfo.addEventListener("click", getLocationInfo());
+
+            function getLocationInfo() {
+                console.log("exec");
+                var info;
+                info = "hostname: " + window.location.hostname;
+                info += "<br>pathname: " + window.location.pathname;
+                info += "<br>port: " + window.location.port;
+                info += "<br>protocol: " + window.location.protocol;
+                info += "<br>href: " + window.location.href;
+
+                document.getElementById("pid").innerHTML = info;
+            }
+        </script>
+    </body>
+</html>

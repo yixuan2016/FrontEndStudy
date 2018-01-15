@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>js事件流</title>
+        <style media="screen">
+            button {margin-top: 10px;}
+        </style>
+    </head>
+    <body>
+        <div id="div">
+            <!-- html事件处理  将事件绑定到结点之上，
+            改动一处，需要改动多处 -->
+            <button id="btn" onclick="demo()">html事件处理</button>
+        </div>
+        <br>
+        <button type="button" id="btn1">DOM0级事件处理</button>
+        <br>
+        <button type="button" id="btn2">DOM2级事件处理</button>
+        <br>
+        <button type="button" id="btn3">IE事件处理(兼容ie8及以下)</button>
+        <br>
+        <button type="button" id="btn4">js事件对象</button>
+        <br>
+        <div id="div1">
+            <button type="button" id="btn5">事件冒泡</button>
+            <a id="aid" href="http://www.baidu.com">百度一下，你就知道</a>
+        </div>
+    </body>
+    <script>
+        function demo() {
+            alert("Hello html事件处理");
+        }
+
+        // DOM0级事件处理
+        var btn1 = document.getElementById("btn1");
+        console.log(btn1);
+        btn1.onclick = function () {alert("Hello DOM0级事件处理1");}  // 事件被覆盖
+        btn1.onclick = function () {alert("Hello DOM0级事件处理2");}
+
+        // DOM2级事件处理
+        // var btn2 = document.getElementById("btn2").addEventListener("click",function (){
+        //     alert("DOM2级事件处理");
+        // });
+
+        var btn2 = document.getElementById("btn2");
+        btn2.addEventListener("click", action1);
+        btn2.addEventListener("click", action2);
+        btn2.addEventListener("click", action3);
+
+        function action1() {
+            alert("DOM2级事件处理1");
+        }
+
+        function action2() {
+            alert("DOM2级事件处理2");
+        }
+
+        function action3() {
+            alert("DOM2级事件处理3");
+        }
+
+        // 移除事件2
+        btn2.removeEventListener("click", action2);
+
+        // ie事件处理 兼容ie8及以下
+        var btn3 = document.getElementById("btn3");
+
+        // 为了兼容多版本浏览器
+        // 这里添加了判断
+        if (btn1.addEventListener) {
+            // 如果支持DOM2级事件处理
+            // 使用addEventListener添加事件
+            btn3.addEventListener("click", action4);
+        }else if(btn3.attachEvent) {
+            //如果不支持DOM2级事件处理
+            // 判断是否支持DOM0级事件处理(ie8及以下)
+            btn3.attachEvent("onclick", action4);
+        }else {
+            // 以上方法都不支持
+            // 直接添加html事件
+            btn3.onclick = action4();
+        }
+
+        function action4() {
+            alert("ie事件处理 兼容ie8及以下");
+        }
+
+        // js事件对象
+        document.getElementById("btn4").addEventListener("click", showType);
+        /**
+         * 获取事件类型
+         * @param obj event 事件对象
+         */
+        function showType(event) {
+            console.log(event.type);
+            console.log(event.target);
+            alert(event.target);
+            // document.write(event.target);
+
+            // 阻止事件冒泡
+            event.stopPropagation();
+        }
+
+        function showDiv() {
+            alert("div");
+        }
+
+        function showA(event) {
+            // 阻止事件冒泡
+            // 不阻止事件冒泡 点击事件会传递到div上面
+            event.stopPropagation();
+            // 阻止事件默认行为
+            event.preventDefault();
+        }
+
+        // ----------------------------------------
+        // 事件冒泡
+        document.getElementById("btn5").addEventListener("click", showType);
+        document.getElementById("div1").addEventListener("click", showDiv);
+        document.getElementById("aid").addEventListener("click", showA);
+    </script>
+</html>
